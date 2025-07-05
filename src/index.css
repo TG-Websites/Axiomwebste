@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+
+.text-euclid {
+  color: #c99e6c;
+}
+.border-euclid
+{
+  border-color: #c99e6c;
+}
+.bg-euclid {
+  background-color: #c99e6c;
+}
+.text-hover-euclid:hover {
+  color: #c99e6c;
+}
+.navy-bg {
+  background-color: #0A2244 ;
+}
+
+.darknavy-bg
+{
+ background-color: #071b37;
+}
+
+.navy-text {
+  color: #1c2b49;
+}
+
+
