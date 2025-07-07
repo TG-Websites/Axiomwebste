@@ -32,7 +32,7 @@ function CardContent({ title, category, categoryColor, description, image, isMob
   };
 
   return (
-    <div className={`bg-white p-3 ${isMobile ? "h-85" : "h-[520px]"} flex flex-col justify-between border-1 shadow-md `}>
+    <div className={`bg-white p-3 ${isMobile ? "h-32" : "h-[520px]"} flex flex-col justify-between border-1 shadow-md `}>
       <div>
         <div className={`inline-block border-2 ${colorMap[categoryColor].text} ${colorMap[categoryColor].border} px-3 py-1 rounded mb-2 text-sm font-semibold tracking-wide`}>
           {category}
@@ -45,7 +45,7 @@ function CardContent({ title, category, categoryColor, description, image, isMob
       <img
         src={image}
         alt={title}
-        className={`w-full ${isMobile ? "h-40" : "h-80"} object-cover rounded`}
+        className={`w-full ${isMobile ? "h-6" : "h-80"} object-cover rounded`}
       />
     </div>
   );
@@ -61,10 +61,10 @@ function DesktopVersion() {
 
   const card2Y = useTransform(scrollYProgress, [0.1, 0.3], [0, -350]);
   const card4Y = useTransform(scrollYProgress, [0.3, 0.5], [0, -350]);
-  const card6Y = useTransform(scrollYProgress, [0.5, 0.8], [0, -350]);
+  const card6Y = useTransform(scrollYProgress, [0.5, 0.9], [0, -350]);
 
   return (
-    <div ref={containerRef} className="h-[400vh] w-full relative">
+    <div ref={containerRef} className="h-[280vh] w-full relative">
       <h1 className="text-4xl font-bold ml-5 sticky top-0 text-black pt-5 bg-white z-10">
         <span className="text-euclid">OUR</span> SUCCESS STORIES
         <div className="w-18 h-0.5 bg-euclid ml-1 mt-2"></div>
@@ -149,90 +149,77 @@ function DesktopVersion() {
 // Mobile Version
 function MobileVersion() {
   const containerRef = React.useRef();
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
 
-  // Raw transform values
-  const cardPair1Y = useTransform(scrollYProgress, [0.0, 0.5], [0, -200]);
-  const cardPair2Y = useTransform(scrollYProgress, [0.4, 0.9], [50, -400]);
-
- 
+  // Smoother transform values with better progression
+  const cardPair1Y = useTransform(scrollYProgress, [0.1, 0.99], [0, -400]);
+  const cardPair2Y = useTransform(scrollYProgress, [0.5, 0.9], [0, -400]);
 
   return (
-    <div ref={containerRef} className="h-[140vh] w-full">
-      <h1 className="text-3xl font-bold ml-5 sticky top-0 text-black pt-5 bg-white z-10">
-        <span className="text-euclid">OUR</span> SUCCESS STORIES
-        <div className="w-18 h-0.5 bg-euclid ml-1 mt-2"></div>
-      </h1>
+    <div ref={containerRef} className="h-[150vh] w-full relative">
+      <div className="sticky top-0 h-screen overflow-hidden">
+        <h1 className="text-4xl font-bold ml-5 top-0 text-black pb-3 bg-white z-10 absolute w-full">
+          <span className="text-euclid">OUR</span> SUCCESS STORIES
+          <div className="w-18 h-0.5 bg-euclid ml-1 mt-2"></div>
+        </h1>
 
-      <div className="grid grid-cols-2 h-fit w-full top-0 pt-20 px-4 gap-4">
-        {/* First pair of cards (static) */}
-        <div className="col-span-1">
-          <CardContent
-            category="FINTECH"
-            categoryColor="purple"
-            title="Payment aggregator authorization"
-            description="Case Study: We helped a financial institution secure payment aggregator authorization."
-            image={mobile}
-            isMobile={true}
-          />
+        <div className="grid grid-cols-2 w-full h-fit pt-20">
+          {/* Column 1 */}
+          <div className="flex flex-col items-center  overflow-hidden">
+            <div className="w-full max-w-lg">
+              <CardContent
+                category="FINTECH"
+                categoryColor="purple"
+                title="Securing a payment aggregator authorization"
+                image={mobile}
+                isMobile={false}
+              />
+            </div>
+            <motion.div
+              className="w-full max-w-lg"
+              style={{ y: cardPair1Y }}
+            >
+              <CardContent
+                category="ARTIFICIAL INTELLIGENCE"
+                categoryColor="orange"
+                title="Advising Microsoft on a COVID-19 information tool"
+                image={covid}
+                isMobile={false}
+              />
+            </motion.div>
+
+          </div>
+
+          {/* Column 2 */}
+          <div className="flex flex-col items-center  overflow-hidden">
+            <div className="w-full max-w-lg">
+              <CardContent
+                category="AEROSPACE & AVIATION"
+                categoryColor="blue"
+                title="Launching India's first remote sensing satellites"
+                image={climate}
+                isMobile={false}
+              />
+            </div>
+            <motion.div
+              className="w-full max-w-lg"
+              style={{ y: cardPair1Y }}
+            >
+              <CardContent
+                category="DIGITAL GAMING"
+                categoryColor="pink"
+                title="Unpacking a billion-dollar industry"
+                image={game}
+                isMobile={false}
+              />
+            </motion.div>
+
+          </div>
         </div>
-        <div className="col-span-1">
-          <CardContent
-            category="DIGITAL GAMING"
-            categoryColor="pink"
-            title="Billion-dollar gaming industry"
-            description="Case Study: Redefining entertainment with adaptive mobile games."
-            image={game}
-            isMobile={true}
-          />
-        </div>
-
-        {/* Second pair of cards (animated) */}
-        <motion.div className="col-span-1" style={{ y: cardPair1Y }}>
-          <CardContent
-            category="AI SOLUTION"
-            categoryColor="orange"
-            title="Microsoft COVID-19 tool"
-            description="Case Study: AI-driven COVID-19 information platform for Microsoft."
-            image={covid}
-            isMobile={true}
-          />
-        </motion.div>
-        <motion.div className="col-span-1" style={{ y: cardPair1Y }}>
-          <CardContent
-            category="AEROSPACE"
-            categoryColor="blue"
-            title="Remote sensing satellites"
-            description="Case Study: India's first remote sensing satellites launch."
-            image={climate}
-            isMobile={true}
-          />
-        </motion.div>
-
-        {/* Third pair of cards (animated) */}
-        <motion.div className="col-span-1" style={{ y: cardPair2Y }}>
-          <CardContent
-            category="COVID-19"
-            categoryColor="red"
-            title="Pandemic response systems"
-            description="Case Study: COVID-19 tracking and response solutions."
-            image={covid}
-            isMobile={true}
-          />
-        </motion.div>
-        <motion.div className="col-span-1" style={{ y: cardPair2Y }}>
-          <CardContent
-            category="CLIMATE TECH"
-            categoryColor="green"
-            title="Environmental monitoring"
-            description="Case Study: IoT sensors for climate interventions."
-            image={climate}
-            isMobile={true}
-          />
-        </motion.div>
       </div>
     </div>
   );
