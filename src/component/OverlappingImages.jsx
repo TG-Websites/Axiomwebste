@@ -59,9 +59,9 @@ function DesktopVersion() {
     offset: ["start start", "end end"]
   });
 
-  const card2Y = useTransform(scrollYProgress, [0.1, 0.3], [0, -350]);
+  const card2Y = useTransform(scrollYProgress, [0.0, 0.3], [0, -350]);
   const card4Y = useTransform(scrollYProgress, [0.3, 0.5], [0, -350]);
-  const card6Y = useTransform(scrollYProgress, [0.5, 0.9], [0, -350]);
+  const card6Y = useTransform(scrollYProgress, [0.5, 0.99], [0, -350]);
 
   return (
     <div ref={containerRef} className="h-[280vh] w-full relative">
