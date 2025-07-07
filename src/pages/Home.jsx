@@ -9,6 +9,7 @@ import NewsletterSection from '../component/NewsletterSection';
 import ContactSection from '../component/ContactSection';
 import Footer from '../component/Footer';
 import AwardsSection from '../component/AwardSection';
+import OverlappingImages from '../component/OverlappingImages';
 
 function Home() {
   return (
@@ -19,6 +20,7 @@ function Home() {
       <MissionSection />
       <AwardsSection/>
       <NewsletterSection />
+      <OverlappingImages/>
       <ContactSection />
       <Footer />
     </div>
