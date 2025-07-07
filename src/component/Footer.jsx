@@ -148,12 +148,12 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-2 text-sm text-gray-400">
+            {/* <div className="flex items-center space-x-2 text-sm text-gray-400">
               <span>Designed by</span>
               <span className="text-white bg-clip-text text-transparent font-semibold">
                 Thundergits
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
       </footer>
