@@ -32,9 +32,10 @@ export default function HeroSection() {
                         </div>
 
                         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
-                            <button className="bg-euclid  text-black font-semibold px-6 py-3 sm:px-5 sm:py-3 rounded-full transition-colors duration-200 text-base sm:text-lg w-full sm:w-auto text-center">
+                            <button className="bg-euclid text-black font-semibold px-6 py-3 rounded-full transition-colors duration-200 text-lg w-auto text-center">
                                 CONTACT US
                             </button>
+
 
                             <div className="flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
                                 <img src={icon_1} alt="" className="w-8 sm:w-10" />
